@@ -1,0 +1,28 @@
+/*JS*/
+
+const Done = props => {
+  const [checked,setChecked] = useState(props.checked?true:false);
+  const toggle = () => setChecked(!checked);
+
+return (
+    <div className={checked?"box checked":"box"} onClick={toggle}></div>
+  )
+}
+
+/*CSS*/
+
+.check-box {
+  background: grey;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+
+.check-box.checked {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
