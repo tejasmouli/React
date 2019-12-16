@@ -1,5 +1,27 @@
 /*JS*/
 
+const App = () => (
+<div>
+  <Todo />
+  <Todo />
+</div>
+)
+
+
+const Todo = props => {
+  const item = {done:true,note:"Hi hello Good morning",createdOn:new Date()}
+  return (
+    <div className="row">
+      <Done className="col-1" checked={item.done}/>
+      <div className="col-10">{item.note}</div>
+      <div className="unln">
+        <i className="material-icons">info</i>
+      </div>
+    </div>
+  )
+  
+}
+
 const Done = props => {
   const [checked,setChecked] = useState(props.checked?true:false);
   const toggle = () => setChecked(!checked);
@@ -7,22 +29,44 @@ const Done = props => {
 return (
     <div className={checked?"box checked":"box"} onClick={toggle}></div>
   )
-}
+};
+
+ReactDOM.render(<App />, mountNode);
 
 /*CSS*/
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+body {
+  font-size: 10px;
+}
 
-.check-box {
+.unln {
+  position: absolute;
+  right: 5px;
+}
+
+.row {
+  padding: 10px 5px;
+  border-bottom: 1px solid grey;
+}
+
+i {
+  color: grey;
+  position: float;
+  
+}
+.box {
   background: grey;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid grey;
 }
 
-.check-box.checked {
+.box.checked {
   background: transparent;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid grey;
 }
